@@ -35,7 +35,7 @@ jobs:
         echo "HI this is test file" >> test.txt
         git add .
         git commit -m "Test file"
-        git push --set-upstream origin pr_test
+        // git push --set-upstream origin pr_test
 
     - name: Create Pull Request
       env:
