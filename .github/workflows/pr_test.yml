@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      run: git config --global user.email "sjw03151@naver.com"
+      run: git config --global user.name "JS0224"
 
     - name: Fetch All Branches
       run: git fetch --all
