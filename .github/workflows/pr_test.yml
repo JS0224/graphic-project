@@ -28,14 +28,24 @@ jobs:
       run: git fetch --all
 
     - name: Create Update Branch If Needed
-      run: git checkout -b pr_test
+      run: |
+        if git ls-remote --exit-code --heads origin pr_test; then
+          git checkout pr_test
+          git pull  --set-upstream origin pr_test
+          echo "Branch already existed"
+        else
+          git checkout -b pr_test
+          git push origin pr_test
+          echo "Branch made"
+        fi
+
 
     - name: Test file
       run: |
         echo "HI this is test file" >> test.txt
         git add .
         git commit -m "Test file"
-        // git push --set-upstream origin pr_test
+        # git push --set-upstream origin pr_test
 
     - name: Create Pull Request
       env:
