@@ -1,0 +1,45 @@
+name: PR test
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  generate-xlt:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Fetch All Branches
+      run: git fetch --all
+
+    - name: Setup PATH
+      run: |
+        echo "/usr/local/bin/gh" >> $GITHUB_PATH
+        echo "/usr/local/bin" >> $GITHUB_PATH
+        echo "/usr/bin/git" >> $GITHUB_PATH
+
+    - name: Create Update Branch If Needed
+      run: git checkout -b pr_test
+
+    - name: Test file
+      run: |
+        echo "HI this is test file" >> test.txt
+        git add .
+        git commit -m "Test file"
+        git push --set-upstream origin pr_test
+
+    - name: Create Pull Request
+      env:
+        NODE_NO_WARNINGS: 1
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: pr_test
+        title: "PR test"
+        body: "PR test - body"
+        base: main
+
