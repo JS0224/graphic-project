@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      run |
+      run: |
         git config --global user.email "sjw03151@naver.com"
         git config --global user.name "JS0224"
 
