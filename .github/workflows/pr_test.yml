@@ -35,6 +35,11 @@ jobs:
         # -H "Accept: application/vnd.github+json" \
         # -H "X-GitHub-Api-Version: 2022-11-28" \
         # /repos/${{ github.repository }}/pulls/comments/2244256988
-        gh pr delete-comment 2244256988
+        gh api \
+        --method PUT \
+        -H "Accept: application/vnd.github+json" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        /repos/${{ github.repository }}/pulls/1/reviews/2244256988/dismissals \
+         -f "message=You are dismissed" -f "event=DISMISS"
       
 
