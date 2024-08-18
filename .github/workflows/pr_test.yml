@@ -39,5 +39,11 @@ jobs:
         --method DELETE \
         -H "Accept: application/vnd.github+json" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        /repos/${{ github.repository }}/issues/comments/1720934250
+        --hostname github.com \
+        /repos/${{ github.repository }}/issues/comments/2295301532
 
+
+#https://github.com/JS0224/graphic-project/pull/1#issuecomment-2295180880
+#https://github.com/JS0224/graphic-project/pull/1#pullrequestreview-2244256988
+#https://github.com/JS0224/graphic-project/pull/1#pullrequestreview-2244257045
+#https://github.com/JS0224/graphic-project/pull/1#discussion_r1720934250
