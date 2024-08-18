@@ -28,7 +28,7 @@ jobs:
     - name: Delete PR
       env:
         NODE_NO_WARNINGS: 1
-        GH_TOKEN: ${{ secrets.MY_TOKEN }}
+        GH_TOKEN: ${{ github.token }}
       run: |
         # gh api \
         # --method DELETE \
