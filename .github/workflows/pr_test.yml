@@ -34,4 +34,5 @@ jobs:
         -H "Accept: application/vnd.github+json" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
         /repos/${{ env. GITHUB_REPOSITORY }}/pulls/comments/2244256988
+      GH_TOKEN: ${{ github.token }}
 
