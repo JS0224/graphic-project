@@ -34,6 +34,7 @@ jobs:
         --method PATCH \
         -H "Accept: application/vnd.github+json" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        /repos/${{ github.repository }}/issues/1\
-        -F "milestone=1"
+        /repos/${{ github.repository }}/issues/1 \
+        -f milestone=1
+     
   
