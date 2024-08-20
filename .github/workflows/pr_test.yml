@@ -36,8 +36,15 @@ jobs:
         -H "X-GitHub-Api-Version: 2022-11-28" \
         /repos/${{ github.repository }}/issues/comments/2295304453
 
-
-#https://github.com/JS0224/graphic-project/pull/1#issuecomment-2295180880
-#https://github.com/JS0224/graphic-project/pull/1#pullrequestreview-2244256988
-#https://github.com/JS0224/graphic-project/pull/1#pullrequestreview-2244257045
-#https://github.com/JS0224/graphic-project/pull/1#discussion_r1720934250
+    - name: Milestone test
+      env:
+        NODE_NO_WARNINGS: 1
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh api \
+        --method PATCH \
+        -H "Accept: application/vnd.github+json" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        /repos/${{ github.repository }}/issues/1\
+        -F "milestone=1"
+  
