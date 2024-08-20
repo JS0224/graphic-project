@@ -25,17 +25,6 @@ jobs:
     - name: Fetch All Branches
       run: git fetch --all
 
-    - name: Delete PR
-      env:
-        NODE_NO_WARNINGS: 1
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        gh api \
-        --method DELETE \
-        -H "Accept: application/vnd.github+json" \
-        -H "X-GitHub-Api-Version: 2022-11-28" \
-        /repos/${{ github.repository }}/issues/comments/2295304453
-
     - name: Milestone test
       env:
         NODE_NO_WARNINGS: 1
