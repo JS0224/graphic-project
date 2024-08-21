@@ -39,7 +39,7 @@ jobs:
 
     - name: Test file
       run: |
-        echo "HI this is test file" >> test.txt
+        echo "HI this is test file2" >> test.txt
         git add .
         git commit -m "Test file"
         git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" -m "Test file"
