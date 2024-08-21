@@ -42,6 +42,7 @@ jobs:
         echo "HI this is test file" >> test.txt
         git add .
         git commit -m "Test file"
+        git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" -m "Test file"
         # git push --set-upstream origin pr_test2
 
     - name: Create Pull Request
