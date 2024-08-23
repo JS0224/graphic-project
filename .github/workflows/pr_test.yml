@@ -3,7 +3,7 @@ name: PR test
 on:
   push:
     branches:
-      - 'main'
+      - 'delete_pr'
 
 jobs:
   generate-xlt:
@@ -15,46 +15,45 @@ jobs:
 
     - name: Setup PATH
       run: |
-        echo "/usr/local/bin/gh" >> $GITHUB_PATH
         echo "/usr/local/bin" >> $GITHUB_PATH
-        echo "/usr/bin/git" >> $GITHUB_PATH
-
+  
     - name: Setup Config
       run: |
-        git config --global user.email "sjw03151@naver.com"
-        git config --global user.name "JS0224"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
 
     - name: Fetch All Branches
       run: git fetch --all
 
     - name: Create Update Branch If Needed
       run: |
-        if git ls-remote --exit-code --heads origin pr_test; then
-          git checkout pr_test
-          git pull  --set-upstream origin pr_test
+        if git ls-remote --exit-code --heads origin pr_test2; then
+          git checkout pr_test2
+          git pull  --set-upstream origin pr_test2
           echo "Branch already existed"
         else
-          git checkout -b pr_test
-          git push origin pr_test
+          git checkout -b pr_test2
+          git push origin pr_test2
           echo "Branch made"
         fi
 
-
     - name: Test file
       run: |
-        echo "HI this is test file" >> test.txt
+        echo "HI this is test file2" >> test.txt
         git add .
         git commit -m "Test file"
-        # git push --set-upstream origin pr_test
+        git commit --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>" -m "Test file"
+        # git push --set-upstream origin pr_test2
 
     - name: Create Pull Request
       env:
         NODE_NO_WARNINGS: 1
       uses: peter-evans/create-pull-request@v6
       with:
-        token: ${{ secrets.MY_TOKEN }}
+        token: ${{ github.TOKEN }}
         branch: pr_test
         title: "PR test"
         body: "PR test - body"
         base: main
-
+     
+  
